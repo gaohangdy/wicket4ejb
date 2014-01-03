@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ebiz</groupId>
+        <artifactId>Wicket4Ejb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>Wicket4Ejb-ear</artifactId>
+    <packaging>ear</packaging>
+    <name>Wicket4Ejb</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <!-- Change this to 5 if you want to use with Java EE 5 container -->
+                    <version>6</version>
+                    <modules>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>Wicket4Ejb-war</artifactId>
+                            <contextRoot>/example</contextRoot>
+                        </webModule>
+                        <ejbModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>Wicket4Ejb-ejb</artifactId>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <type>ejb</type>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Wicket4Ejb-ejb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <type>war</type>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Wicket4Ejb-war</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
