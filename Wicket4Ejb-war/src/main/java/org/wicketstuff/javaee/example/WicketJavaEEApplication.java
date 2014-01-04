@@ -24,23 +24,20 @@ import org.wicketstuff.javaee.example.pages.ListContacts;
 import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
 
 /**
- * 
+ *
  * @author Filippo Diotalevi
  */
-public class WicketJavaEEApplication extends WebApplication
-{
+public class WicketJavaEEApplication extends WebApplication {
 
-	@Override
-	public Class<? extends Page> getHomePage()
-	{
-//		return ListContacts.class;
-            return LoginPage.class;
-	}
+    @Override
+    public Class<? extends Page> getHomePage() {
+        return ListContacts.class;
+//            return LoginPage.class;
+    }
 
-	@Override
-	protected void init()
-	{
-		getComponentInstantiationListeners().add(new JavaEEComponentInjector(this));
-		mountPage("/insert", InsertContact.class);
-	}
+    @Override
+    protected void init() {
+        getComponentInstantiationListeners().add(new JavaEEComponentInjector(this));
+        mountPage("/insert", InsertContact.class);
+    }
 }
